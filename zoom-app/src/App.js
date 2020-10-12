@@ -6,8 +6,6 @@ import HomePage from './components/home/HomePage';
 import Settings from './components/settings/Settings';
 import SettingsGeneral from './components/settings/SettingsGeneral';
 import AdvancedSharingOptions from './components/AdvancedSharingOptions/AdvancedSharingOptions';
-
-
 import joinMeeting from './components/joinmeeting/joinMeeting';
 import DefaultEmail from './components/inviteothers/DefaultEmail';
 import Gmail from './components/inviteothers/Gmail';
@@ -18,9 +16,6 @@ import Yahoomail from './components/inviteothers/Yahoomail';
 import PersonalMeeting from './components/personalmeeting/PersonalMeeting';
 import Home from './components/home/Home';
 import ShareScreen from './components/sharescreen/ShareScreen';
-import Participants from './components/participants/Participants';
-import Chat from './components/chat/Chat';
-
 import SignInNew from './components/signin/SignInNew';
 import SignUpNew from './components/signup/SignUpNew';
 
@@ -50,8 +45,7 @@ const App=()=>{
             <Route exact path="/PersonalMeeting" component={PersonalMeeting} />
 
             <Route exact path="/ShareScreen" component={ShareScreen} />
-            <Route exact path="/Participants" component={Participants} />
-            <Route exact path="/Chat" component={Chat} />
+            
              <Route exact path="/SignInNew" component={SignInNew} />
              <Route exact path="/SignUpNew" component={SignUpNew} />
             

@@ -1,12 +1,13 @@
 import React ,{useState} from 'react';
 import './Footer.css';
 import {  faMicrophone,faMicrophoneSlash,faVideo,faShare,faRecordVinyl,faShieldAlt,faUserFriends,faCommentAlt,
-faHeadphones, faPhotoVideo, faUserPlus, faMicrophoneAlt, faVideoSlash } from '@fortawesome/free-solid-svg-icons'
+faHeadphones, faPhotoVideo, faUserPlus, faMicrophoneAlt, faVideoSlash,faSortDown,faSave,faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import Popup from 'reactjs-popup';
 
 
 
@@ -101,8 +102,8 @@ import {Link} from 'react-router-dom';
                   </DropdownButton>
                   </button>
 
-                   <button className="btn btn-danger dropdown-toggle" href="#active">
-                     <Link to="Participants" style={{color:"white"}}>
+                  <Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
+                    
                    <FontAwesomeIcon icon={faUserFriends} size="2x" ></FontAwesomeIcon><br/>                   
                    <DropdownButton alignRight title="Participants" > 
                    <Link to="/InviteOthers" className="text1" >
@@ -110,17 +111,65 @@ import {Link} from 'react-router-dom';
                    </Link>
                     <br/><br/>
                    </DropdownButton>
-                   </Link>
-                   </button>
+                  
+                   </button>} position="right center">
+    <div> <div class="ui right fixed vertical menu" style={{width:"8.2cm"}}>
+  <div class="item">
+  <FontAwesomeIcon icon={faSortDown} /><span style={{textAlign:"center", marginLeft:"2.5cm"}}>Participants</span>
+  </div>
 
-                    <button className="btn btn-danger dropdown-toggle" href="#active">
-                      <Link to="Chat" style={{color:"white"}}>
-                   <FontAwesomeIcon icon={faCommentAlt} size="2x" ></FontAwesomeIcon><br/>
-                   <DropdownButton alignRight title="Chat" > 
-                   <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br/><br/>
-                   </DropdownButton>
-                   </Link>
-                   </button> 
+  <div style={{marginTop:'40em'}}>
+          <button type="settings-1" class="btn btn-secondary" style={{borderRadius:"5px", marginLeft:"0.5cm", marginRight:"0.4cm", width:"2cm",height:"1cm"}}>Invite</button>
+          <button type="settings-1" class="btn btn-secondary" style={{borderRadius:"5px",marginRight:"0.4cm", width:"2cm",height:"1cm"}}>MuteAll</button>
+         
+  <button style={{borderRadius:"5px",width:"1cm", height:"1cm"}}>         
+        <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon>      
+        </button> 
+                      
+                 
+</div>
+                          </div>
+</div>
+  </Popup>
+
+                   <Popup trigger={
+                        <button className="btn btn-danger dropdown-toggle" href="#active">
+                         
+                                <FontAwesomeIcon icon={faCommentAlt} size="2x" ></FontAwesomeIcon><br/>
+                                        <DropdownButton alignRight title="Chat" > 
+                                        <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br/><br/>
+                                        </DropdownButton>
+                       
+                        </button>} position="right center">
+                        <div class="ui right fixed vertical menu" style={{width:"8.2cm"}}>
+                                <div class="item">
+                                        <FontAwesomeIcon icon={faSortDown} /><span style={{textAlign:"center", marginLeft:"2.5cm"}}>Chat</span>
+                                </div>
+
+                          
+
+  
+                        <form class="form-inline" style={{marginTop:'40em'}}>
+                                <div class="form-group">
+                                        <label for="inputPassword6" style={{marginLeft:"0.4cm"}}>To : </label>
+   
+                                        <select>
+                                        <option value="val1">Everyone</option>
+                                        <option value="val2">Private</option>
+                                        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <button ><FontAwesomeIcon icon={faSave} ></FontAwesomeIcon>&nbsp;File</button>
+
+                                <button style={{float:"right"}} >  <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon></button>    
+        
+    
+                                <input type="text" placeholder="Type text here..."style={{border:'none', marginTop:'0.5em',marginLeft:"0.4cm"}}/>
+    
+                                </div>
+                        </form>
+
+                 </div>
+                  </Popup>
 
                    <button className="btn btn-danger dropdown-toggle" href="#active">
                      <Link to="ShareScreen" style={{color:"white"}}>
