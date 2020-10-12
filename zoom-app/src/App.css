@@ -1,0 +1,45 @@
+.dropdown-item{
+    display: flex;
+    color:white;
+    text-decoration: none;
+    font-size: medium;
+     
+  }
+  .list{
+    text-decoration: none;
+    color: white;
+  }
+  .primary{  
+    color:black;
+    background-color: white;
+    border: grey;
+    padding-left: 1cm;
+    padding-right: 1cm;
+    padding-top: 0.5cm;
+    padding-bottom: 1cm;
+  }
+  .group1{
+    padding-left: 10cm;
+    padding-right: 8cm;
+    padding-top: 5cm;
+  }
+  .group2{ 
+    padding-left: 10cm;
+    padding-right: 8cm; 
+  }
+  .btn-settings{
+    float: right;
+    text-align: right;
+    background-color: white;
+    border-color: white;
+    color: black;
+  }
+  .nav-bar{
+    height: 1.5cm;
+  }
+  .text1{
+    color: white;
+    background-color: blue;
+    display: flex;
+    font-size: larger;
+  }

@@ -1,0 +1,22 @@
+.horizontal{
+    border-top:  2px solid grey;
+    width: 100%;
+    
+}
+  .vertical-new{
+    border-left: 2px solid grey;   
+      height: 100%;
+      left: 18%;
+      margin-left: 3px;
+      top: 1.6cm;
+  }
+  .checkbox-new{
+padding-left: 7cm;
+position: absolute;
+top:40px;
+left: 1px;
+  }
+  .checkbox{
+      padding-top: 30px;
+      
+  }
