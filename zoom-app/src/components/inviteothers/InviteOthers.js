@@ -13,7 +13,7 @@ const InviteOthers =()=>{
 
 <h5 style={{textAlign:'center', marginTop:'8em'}}>Choose your email Service to send notification</h5>
 
-<Link to="/defaultemail"><button class="ui circular facebook icon button" style={{width:'8em', height:'8em', marginRight:'12em', marginTop:'5em'}}>
+<Link to="/defaultemail"><button class="ui circular facebook icon button" style={{width:'8em', height:'8em', marginRight:'12em', marginTop:'5em', marginLeft:'33em'}}>
   <i class="huge envelope open outline icon"></i>
  <h6 style={{marginLeft:'0.4em'}}>Default Email</h6>
   
