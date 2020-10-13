@@ -4,6 +4,9 @@ import './PersonalMeetingID.css'
 import {  faRedo,faPlusSquare, faCopy, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const { v4: uuidV4 } = require('uuid')
+const newId= uuidV4();
+
 const PersonalMeetingID = () => (
   <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
@@ -21,17 +24,17 @@ const PersonalMeetingID = () => (
                    <FontAwesomeIcon icon={faPlusSquare} size="2x" ></FontAwesomeIcon>
                    </a> <br/> <br/> <br/> 
                 
-                   <div className="btn-one" verticalAlign='middle'>2307572459<br/>
+                   <div className="btn-one" verticalAlign='middle'>{newId}<br/>
                     My Personal Meeting ID(PMI) 
                     </div>
 
         </Form>
       </Grid.Column>
 
-      <Grid.Column className="vl" verticalAlign='middle'>
-        <form className="form-new-new">
+      <Grid.Column className="newvl">
+        <form className="form-new-new" style={{marginLeft:'6cm'}}>
       <label> <h1>My Personal Meeting ID(PMI)</h1></label><br/>
-                   <label>2307572459</label> <br/><br/>
+                   <label>{newId}</label> <br/><br/>
 
                    <button>Start</button>&nbsp;&nbsp;&nbsp;
                    <button><FontAwesomeIcon icon={faCopy} size="1x"></FontAwesomeIcon>&nbsp;Copy Invitation</button>&nbsp;&nbsp;&nbsp;
@@ -49,7 +52,7 @@ const PersonalMeetingID = () => (
                        Join Meeting Room<br/>
                        http://us04web.zoom.us/j/2307572459<br/><br/>
 
-                       Meeting ID:2307572459<br/><br/>
+                       Meeting ID:{newId}<br/><br/>
                        Passcode:8ML4eV
 
                    </p> 
@@ -57,7 +60,7 @@ const PersonalMeetingID = () => (
       </Grid.Column>
     </Grid>
 
-    <Divider vertical></Divider>
+    <Divider vertical ></Divider>
 
      
     
