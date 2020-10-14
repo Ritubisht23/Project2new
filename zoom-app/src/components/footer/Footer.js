@@ -1,5 +1,6 @@
-import React ,{useState} from 'react';
+import React, { useState, useEffect } from "react";
 import './Footer.css';
+import './Chat.css';
 import {  faMicrophone,faMicrophoneSlash,faVideo,faShare,faRecordVinyl,faShieldAlt,faUserFriends,faCommentAlt,
 faHeadphones, faPhotoVideo, faUserPlus, faMicrophoneAlt, faVideoSlash,faSortDown,faSave,faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +9,74 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import Popup from 'reactjs-popup';
+import io from "socket.io-client";
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
+
+// Globla Varibale definition for Chatting functionality
+const ENDPOINT='localhost:5000'
+let socket;
+
+  
+
+const Footer=()=>{
+
+// Use state and use effect for chat functinality
+  const [name, setName] = useState('');
+  const [room, setRoom] = useState('');
+  const [users, setUsers] = useState('');
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+   
+    //Use below code to fetch user and room from URL
+    // const { name, room } = queryString.parse(location.search);
+
+    socket = io(ENDPOINT);
+ 
+   //Use this code to take from alert
+   // const name= prompt("Enter your name to join the chat");
+  //  const room= prompt("Enter Meeting ID to join the chat");
+   
+  const name="Fujitsu";
+  const room="524869";
+    
+  setRoom(room);
+  setName(name);
 
 
+console.log(name);
+     socket.emit('join', {name:name,room:room }, (error) => {
+       if(error) {
+         alert(error);  
+       }
+       
+    });
+  }, [ENDPOINT]);
+  
+  useEffect(() => {
+    socket.on('message', message => {
+      setMessages(messages => [ ...messages, message ]);
+    });
+    
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
+}, []);
 
-  const Footer=()=>{
+  const sendMessage = (event) => {
+    event.preventDefault();
+
+    if(message) {
+      socket.emit('sendMessage', message, () => setMessage(''));
+    }
+  }
+
+  //*************************************Chatting functionality ends */
+
+
+ 
     const [audioMuted, setAudioMuted] = useState(false)
     const [videoMuted, setVideoMuted] = useState(false)
     return(
@@ -113,99 +178,91 @@ import Popup from 'reactjs-popup';
                    </DropdownButton>
                   
                    </button>} position="right center">
-    <div> <div class="ui right fixed vertical menu" style={{width:"8.2cm"}}>
-  <div class="item">
-  <FontAwesomeIcon icon={faSortDown} /><span style={{textAlign:"center", marginLeft:"2.5cm"}}>Participants</span>
-  </div>
+            <div> <div class="ui right fixed vertical menu" style={{ width: "8.2cm" }}>
+              <div class="item">
+                <FontAwesomeIcon icon={faSortDown} /><span style={{ textAlign: "center", marginLeft: "2.5cm" }}>Participants</span>
+              </div>
 
-  <div style={{marginTop:'40em'}}>
-          <button type="settings-1" class="btn btn-secondary" style={{borderRadius:"5px", marginLeft:"0.5cm", marginRight:"0.4cm", width:"2cm",height:"1cm"}}>Invite</button>
-          <button type="settings-1" class="btn btn-secondary" style={{borderRadius:"5px",marginRight:"0.4cm", width:"2cm",height:"1cm"}}>MuteAll</button>
-         
-  <button style={{borderRadius:"5px",width:"1cm", height:"1cm"}}>         
-        <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon>      
-        </button> 
-                      
-                 
-</div>
-                          </div>
-</div>
-  </Popup>
+              <div style={{ marginTop: '40em' }}>
+                <button type="settings-1" class="btn btn-secondary" style={{ borderRadius: "5px", marginLeft: "0.5cm", marginRight: "0.4cm", width: "2cm", height: "1cm" }}>Invite</button>
+                <button type="settings-1" class="btn btn-secondary" style={{ borderRadius: "5px", marginRight: "0.4cm", width: "2cm", height: "1cm" }}>MuteAll</button>
 
-                   <Popup trigger={
-                        <button className="btn btn-danger dropdown-toggle" href="#active">
-                         
-                                <FontAwesomeIcon icon={faCommentAlt} size="2x" ></FontAwesomeIcon><br/>
-                                        <DropdownButton alignRight title="Chat" > 
-                                        <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br/><br/>
-                                        </DropdownButton>
-                       
-                        </button>} position="right center">
-                        <div class="ui right fixed vertical menu" style={{width:"8.2cm"}}>
-                                <div class="item">
-                                        <FontAwesomeIcon icon={faSortDown} /><span style={{textAlign:"center", marginLeft:"2.5cm"}}>Chat</span>
-                                </div>
+                <button style={{ borderRadius: "5px", width: "1cm", height: "1cm" }}>
+                  <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon>
+                </button>
 
-                          
 
-  
-                        <form class="form-inline" style={{marginTop:'40em'}}>
-                                <div class="form-group">
-                                        <label for="inputPassword6" style={{marginLeft:"0.4cm"}}>To : </label>
-   
-                                        <select>
-                                        <option value="val1">Everyone</option>
-                                        <option value="val2">Private</option>
-                                        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+            </div>
+            </div>
+          </Popup>
 
-                                <button ><FontAwesomeIcon icon={faSave} ></FontAwesomeIcon>&nbsp;File</button>
 
-                                <button style={{float:"right"}} >  <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon></button>    
-        
-    
-                                <input type="text" placeholder="Type text here..."style={{border:'none', marginTop:'0.5em',marginLeft:"0.4cm"}}/>
-    
-                                </div>
-                        </form>
 
-                 </div>
-                  </Popup>
+ {/* Chatting compponent Starts*/}
 
-                   <button className="btn btn-danger dropdown-toggle" href="#active">
-                     <Link to="ShareScreen" style={{color:"white"}}>
-                   <FontAwesomeIcon icon={faShare} size="2x" ></FontAwesomeIcon><br/>
-                   <DropdownButton alignRight title="Share screen" >                    
-                  <Dropdown.Item className="dropdown-item" eventKey="option-1">One participant can share at a time</Dropdown.Item>
-                  <Dropdown.Item className="dropdown-item" eventKey="option-2">Mutiple participants can share simultaneously</Dropdown.Item>
-                  <Link to="/AdvancedSharingOptions" className="text1" >Advanced sharing options
+          <Popup trigger={
+            <button className="btn btn-danger dropdown-toggle" href="#active">
+
+              <FontAwesomeIcon icon={faCommentAlt} size="2x" ></FontAwesomeIcon><br />
+              <DropdownButton alignRight title="Chat" >
+                <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br /><br />
+              </DropdownButton>
+
+            </button>} position="right center">
+            <div class="ui right fixed vertical menu" style={{ width: "8.2cm" }}>
+              <div class="item">
+                <FontAwesomeIcon icon={faSortDown} /><span style={{ textAlign: "center", marginLeft: "2.5cm" }}>Chat</span>
+              </div>
+
+                <div className="outerContainer">
+                  <div className="containerChat">
+                    <Messages messages={messages} name={name} />
+                    <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+                  </div>
+                </div>
+
+            </div>
+          </Popup>
+ {/* Chatting compponent  Ends */}
+
+
+
+          <button className="btn btn-danger dropdown-toggle" href="#active">
+            <Link to="ShareScreen" style={{ color: "white" }}>
+              <FontAwesomeIcon icon={faShare} size="2x" ></FontAwesomeIcon><br />
+              <DropdownButton alignRight title="Share screen" >
+                <Dropdown.Item className="dropdown-item" eventKey="option-1">One participant can share at a time</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" eventKey="option-2">Mutiple participants can share simultaneously</Dropdown.Item>
+                <Link to="/AdvancedSharingOptions" className="text1" >Advanced sharing options
                     <Dropdown.Item className="dropdown-item" eventKey="option-3" title="Advanced sharing options" />
-                   </Link> <br/><br/>
-                   </DropdownButton>
-                   </Link>                   
-                   </button>
+                </Link> <br /><br />
+              </DropdownButton>
+            </Link>
+          </button>
 
-                   
-                   <button className="btn btn-danger dropdown-toggle">
-                   <FontAwesomeIcon icon={faRecordVinyl} size="2x"></FontAwesomeIcon>                   
-                   <DropdownButton alignRight title="Record">                    
-                   <Dropdown.Item className="dropdown-item" eventKey="option-1">Start</Dropdown.Item>
-                   <Dropdown.Item className="dropdown-item" eventKey="option-2">Stop</Dropdown.Item>
-                   <Dropdown.Item className="dropdown-item" eventKey="option-3">Pause</Dropdown.Item><br/><br/>
-                  </DropdownButton>                            
-                   </button>
+
+          <button className="btn btn-danger dropdown-toggle">
+            <FontAwesomeIcon icon={faRecordVinyl} size="2x"></FontAwesomeIcon>
+            <DropdownButton alignRight title="Record">
+              <Dropdown.Item className="dropdown-item" eventKey="option-1">Start</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" eventKey="option-2">Stop</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" eventKey="option-3">Pause</Dropdown.Item><br /><br />
+            </DropdownButton>
+          </button>
 
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                    <Button className="btn-end" title="End" >
-                   &nbsp;&nbsp; End &nbsp;&nbsp;
-                   </Button>                     
-                     
-                </div>           
-            </footer>
-            </div>  
-       
-    )
+            &nbsp;&nbsp; End &nbsp;&nbsp;
+                   </Button>
+
+        </div>
+      </footer>
+    </div>
+
+  )
 }
 
 export default Footer
