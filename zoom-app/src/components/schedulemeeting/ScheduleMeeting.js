@@ -3,44 +3,85 @@ import { Divider, Button } from 'semantic-ui-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
-const ScheduleMeeting =()=>{
+import axios from 'axios';
 
+class ScheduleMeeting extends React.Component{
+    state = {
+      email : '',
+      topic:'',
+      date:'',
+      time:'',
+      duration:''
+    };
   
+
+
+    onChangeInput = (e)=>{
+        this.setState({email: e.target.value})
+    }
+
+    onChangeTopic= (e)=>{
+      this.setState({topic: e.target.value})
+  }
+
+  onChangeTime= (e)=>{
+    this.setState({time: e.target.value})
+}
+
+onChangeDate= (e)=>{
+  this.setState({date: e.target.value})
+}
+
+onChangeDuration= (e)=>{
+  this.setState({duration: e.target.value})
+}
+ 
+    OnFormSubmit = (e)=>{
+        e.preventDefault();
+        const obj={
+            email:this.state.email,
+            topic:this.state.topic,
+            date:this.state.date,
+            time:this.state.time,
+            duration:this.state.duration
+        };
+        console.log('pawan',obj.email)
+        axios.post("http://127.0.0.1:5000/users/sendemail", obj)
+        .then((res) => console.log(res.data));
+    }
+    render(){
+
+
+ 
     return(
-        <form class="ui form" style={{marginTop:'1em'}}>
+        <form class="ui form" style={{marginTop:'1em'}}   onSubmit={this.OnFormSubmit}>
             <h1><b>Schedule Meeting</b></h1>
         <div class="field">
           <label><b>Topic</b></label><br/><br/>
-          <input type="text" name="topic" placeholder="Your Meeting Topic" style={{width:"15cm", height:"0.6cm", borderRadius:"4px"}} />
-        </div><br/>
+          <input type="text" name="topic" placeholder="Your Meeting Topic" style={{width:"6cm", height:"0.6cm", borderRadius:"4px"}} onChange={this.onChangeTopic} />
+          <input type="text" name="Invite Link" placeholder="add participants" style={{width:"6cm", height:"0.6cm", borderRadius:"4px", marginLeft:"2cm"}} onChange={this.onChangeInput} />
+        </div>
+        <br/>
         
         <div class="inline fields" style={{display:"flex"}}>
     
     <div class="nine wide field">
     <label><b>Start:</b></label>
     <div class="field">   
-      
+    <input id="date" type="date" name="appt-date" onChange={this.onChangeDate} ></input>
         
     </div>
     </div>
-
-    <div class="two wide field" > 
-    <select class="ui fluid dropdown" style={{marginLeft:"3cm", width:"3cm", height:"0.6cm",borderRadius:"4px"}}>
-        <option value="">9:00</option>
-    <option value="AL">9:30</option>
-    <option value="AK">10:00</option>
-    <option value="DE">10:30</option>
-    <option value="DC">11:00</option>
-    
-      </select>
-    </div>
+      <div className="two wide field" style={{marginLeft:'5cm', marginTop:'0.5cm'}}> 
+        <input id="time" type="time" name="appt-time" onChange={this.onChangeTime}></input></div>
+      
 </div><br/>
 
 
-<div class="inline fields" style={{display:"flex"}}>
+<div class="inline fields" style={{display:"flex"}} onChange={this.onChangeDuration}>
     <div class="four wide field">
     <label><b>Duration:</b></label>
-      <select class="ui fluid dropdown" style={{marginLeft:"3cm", width:"4cm", height:"0.6cm",borderRadius:"4px"}}>
+      <select class="ui fluid dropdown" style={{marginLeft:"3cm", width:"4cm", height:"0.6cm",borderRadius:"4px"}} >
         <option value="">0 hour</option>
     <option value="AL">1 hour</option>
     <option value="AK">2 hours</option>
@@ -177,6 +218,7 @@ const ScheduleMeeting =()=>{
     <Button  style={{borderRadius:"4px",marginLeft:"1cm",width:"3cm", height:"0.8cm",  backgroundColor:"grey"}}>Cancel</Button>
         </form>
     );
-}
+} }
+
 
 export default ScheduleMeeting;
