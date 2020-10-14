@@ -59,18 +59,18 @@ class joinMeeting extends Component {
       return ( 
        
        <Router>
-         <div style={{paddingLeft:"15cm", paddingTop:"4cm"}}>
+         <div style={{paddingLeft:"5cm", paddingTop:"2cm"}}>
          <h1 style={{color:'blue',textAlign:'left'}}> Join Meeting</h1><br />
          <form name="myform" method="post" onSubmit={this.submitForm} >
-         <div className="ui input">
+         {/* <div className="ui input"> */}
          <input type="text" name="meetingID" value={this.state.fields.meetingID} onChange={this.handleChange} size="50" style={{width:"10cm", height:"0.7cm", borderRadius:"6px"}} placeholder="Enter meeting ID or Personal Link name" required></input><br /><br />
          <div className="errorMsg">{this.state.errors.meetingID}</div>
-         </div>
+         {/* </div> */}
 
-         <div className="ui input">
+         {/* <div className="ui input"> */}
          <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange} size="50" style={{width:"10cm", height:"0.7cm", borderRadius:"6px"}} placeholder="Enter your name" required></input><br /><br />
          <div className="errorMsg">{this.state.errors.username}</div>
-         </div>
+         {/* </div> */}
 
          <div className="ui checkbox">
          <input type="checkbox" />
