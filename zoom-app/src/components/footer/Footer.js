@@ -14,7 +14,7 @@ import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 
 // Globla Varibale definition for Chatting functionality
-const ENDPOINT='localhost:8000'
+const ENDPOINT='/'
 let socket;
 
   
