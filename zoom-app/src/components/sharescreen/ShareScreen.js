@@ -3,7 +3,7 @@ import '../../App.css';
 
 const ShareScreen =()=>{
     return(
-        <form class="ui form" style={{marginTop:'5em', width:'40%', marginLeft:'25em'}}>
+        <form class=" new-new-form" style={{marginTop:'5em', width:'40%', marginLeft:'25em'}}>
             <h1><b>Share Screen</b></h1>
 
             <div>

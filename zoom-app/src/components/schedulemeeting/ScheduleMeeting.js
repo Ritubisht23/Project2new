@@ -54,7 +54,7 @@ onChangeDuration= (e)=>{
 
  
     return(
-        <form className="ui form" style={{marginTop:'1em'}}   onSubmit={this.OnFormSubmit}>
+        <form className="new-form" onSubmit={this.OnFormSubmit}>
             <h1><b>Schedule Meeting</b></h1>
         <div class="field">
           <label><b>Topic</b></label><br/><br/>
@@ -125,20 +125,20 @@ onChangeDuration= (e)=>{
   <Divider horizontal className="horizontal" style={{borderColor:"whiteSmoke"}}><br/>
     </Divider>
     
-  <label><b>Meeting ID</b></label>
+  <label><b>Meeting ID</b></label><br/>
   <div class="inline fields" style={{display:"flex"}}>
     
     <div class="field">
-      <div class="ui radio checkbox">
+      
         <input type="radio" tabindex="0" name="generate_automatically" />
         <label>Generate Automatically</label>
-      </div>
+      
     </div>
-    <div class="field">
-      <div class="ui radio checkbox" style={{marginLeft:"3cm"}}>
+    <div class="field" style={{marginLeft:"3cm"}}>
+      
         <input type="radio" tabindex="0" name="pmid"/>
         <label>Personal Meeting ID</label>
-      </div>
+      
     </div></div><br/>
 
     <Divider horizontal className="horizontal" style={{borderColor:"whiteSmoke"}}><br/>
@@ -164,16 +164,16 @@ onChangeDuration= (e)=>{
     <div class="field">
     <label style={{marginLeft:"0.5cm"}}><b>Host : </b></label>      
         <input type="radio" tabindex="0" name="on"  />
-        <label style={{marginLeft:"0.5cm"}}>On</label>    
-        <input type="radio" tabindex="0" name="off"/>
-        <label style={{marginLeft:"0.5cm"}}>Off</label>
+        <label >On</label>    
+        <input type="radio" tabindex="0" name="off" style={{marginLeft:"0.5cm"}}/>
+        <label >Off</label>
     </div>
 
     <div class="field">
     <label style={{marginLeft:"1cm"}}><b>Partcipants : </b></label>      
         <input type="radio" ></input>
-        <label style={{marginLeft:"0.5cm"}}>On</label>     
-        <input type="radio" tabindex="0" />
+        <label >On</label>     
+        <input type="radio" tabindex="0" style={{marginLeft:"0.5cm"}}/>
         <label>Off</label>   
     </div>
   </div>
