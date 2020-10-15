@@ -108,9 +108,9 @@ console.log(name);
             <label className="label"> Invite Link </label>
             <label className="new-label">: http:skdfkj.com</label><br/>
             <a className="label-1" href="#copy url">copy url</a>
-            <button className="ui button" onClick={start} style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
+            {/* <button className="ui button" onClick={start} style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
         Sart
-        </button>
+        </button> */}
          </div>
 
          <div className="columns">                  
@@ -132,7 +132,10 @@ console.log(name);
                    <span>Invite others</span>
                    </button> 
                   
-                   <button><i className="fas fa-video" onClick={start}></i></button>
+                   <button className="icon1" onClick={start}>
+                   <FontAwesomeIcon icon={faMicrophone} size="8x" ></FontAwesomeIcon><br/><br/>
+                   <span>Start</span>
+                   </button> 
 
           </div>
          
