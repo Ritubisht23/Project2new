@@ -39,11 +39,11 @@ console.log();
    // const name= prompt("Enter your name to join the chat");
   //  const room= prompt("Enter Meeting ID to join the chat");
    
-  // const name="Fujitsu";
-  // const room="524869";
+   const name=props.location.state.detail.username;
+   const room=props.location.state.detail.meetingID;
     
-  setRoom(props.location.state.detail.meetingID);
-  setName(props.location.state.detail.username);
+  setRoom(room);
+  setName(name);
 
 
 console.log(name);
