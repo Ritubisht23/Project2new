@@ -63,6 +63,7 @@ class joinMeeting extends Component {
       return ( 
        
        <Router>
+         
          <div style={{paddingLeft:"5cm", paddingTop:"2cm"}}>
          <h1 style={{color:'blue',textAlign:'left'}}> Join Meeting</h1><br />
          <form name="myform" method="post" onSubmit={this.submitForm} >

@@ -7,20 +7,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import io from "socket.io-client";
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 
 // Globla Varibale definition for Chatting functionality
-const ENDPOINT='localhost:5000'
+const ENDPOINT='localhost:8000'
 let socket;
 
   
 
 const Footer=(props)=>{
 console.log();
+//for video call and screen share
+const history=useHistory();
+    const start=()=> {
+      const id = props.location.state.detail.meetingID;
+      console.log(`/room/${id}`)
+      history.push(`/room/${id}`);
+      
+  }
+
 // Use state and use effect for chat functinality
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
@@ -99,6 +108,9 @@ console.log(name);
             <label className="label"> Invite Link </label>
             <label className="new-label">: http:skdfkj.com</label><br/>
             <a className="label-1" href="#copy url">copy url</a>
+            <button className="ui button" onClick={start} style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
+        Sart
+        </button>
          </div>
 
          <div className="columns">                  
@@ -119,6 +131,9 @@ console.log(name);
                    <FontAwesomeIcon icon={faUserPlus} size="8x" ></FontAwesomeIcon></a><br/><br/>
                    <span>Invite others</span>
                    </button> 
+                  
+                   <button><i className="fas fa-video" onClick={start}></i></button>
+
           </div>
          
         <footer className="footer is-primary">

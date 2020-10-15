@@ -16,6 +16,8 @@ import Yahoomail from './components/inviteothers/Yahoomail';
 import PersonalMeeting from './components/personalmeeting/PersonalMeeting';
 import Home from './components/home/Home';
 import ShareScreen from './components/sharescreen/ShareScreen';
+import roomWithFooter from './components/sharescreen/roomWithFooter';
+import RoomC from './components/sharescreen/RoomC';
 import SignInNew from './components/signin/SignInNew';
 import SignUpNew from './components/signup/SignUpNew';
 
@@ -44,8 +46,10 @@ const App=()=>{
             <Route exact path="/Yahoomail" component={Yahoomail} />
             <Route exact path="/PersonalMeeting" component={PersonalMeeting} />
 
-            <Route exact path="/ShareScreen" component={ShareScreen} />
-            
+            <Route exact path="/ShareScreen1" component={ShareScreen} />
+            <Route exact path="/ShareScreen" component={RoomC} />
+            <Route exact path="/test" component={roomWithFooter} />
+            <Route path="/room/:roomID" component={RoomC} />
              <Route exact path="/SignInNew" component={SignInNew} />
              <Route exact path="/SignUpNew" component={SignUpNew} />
             
