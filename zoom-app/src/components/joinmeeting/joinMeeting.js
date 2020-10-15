@@ -29,6 +29,10 @@ class joinMeeting extends Component {
         fields["username"] = "";
         this.setState({fields:fields});
         
+        this.props.history.push({
+          pathname: '/Footer',
+          state: { detail: this.state.fields }
+        });
     }
   }
   validateForm() {
@@ -81,11 +85,11 @@ class joinMeeting extends Component {
          <label>Turn off my video</label><br />
          </div><br />
 
-<Link to="Footer">
+{/* <Link to="Footer"> */}
         <button className="ui button" style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
         Join
         </button>
-  </Link>
+  {/* </Link> */}
        
         <button className="ui button" onClick={this.resetForm} style={{marginLeft:"0.5cm",width:"2.5cm",height:"0.7cm",color:"Black"}}>
          Cancel

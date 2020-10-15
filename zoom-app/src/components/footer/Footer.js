@@ -19,8 +19,8 @@ let socket;
 
   
 
-const Footer=()=>{
-
+const Footer=(props)=>{
+console.log();
 // Use state and use effect for chat functinality
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
@@ -39,11 +39,11 @@ const Footer=()=>{
    // const name= prompt("Enter your name to join the chat");
   //  const room= prompt("Enter Meeting ID to join the chat");
    
-  const name="Fujitsu";
-  const room="524869";
+  // const name="Fujitsu";
+  // const room="524869";
     
-  setRoom(room);
-  setName(name);
+  setRoom(props.location.state.detail.meetingID);
+  setName(props.location.state.detail.username);
 
 
 console.log(name);
@@ -83,10 +83,10 @@ console.log(name);
      <div className="container">
          <div className="row">
             <label className="label"> meeting topic   </label>
-            <label className="label-new"> : topic</label><br/>
+            <label className="label-new"> : {props.location.state.detail.meetingID}</label><br/>
             
             <label className="label"> Host </label>
-            <label className="label-new-new">: Name</label><br/>
+            <label className="label-new-new">: {props.location.state.detail.username}</label><br/>
 
             <label className="label"> Password  </label>
             <label className="label-label"> : 2w5sg</label><br/>

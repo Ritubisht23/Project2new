@@ -54,7 +54,7 @@ onChangeDuration= (e)=>{
 
  
     return(
-        <form class="ui form" style={{marginTop:'1em'}}   onSubmit={this.OnFormSubmit}>
+        <form className="ui form" style={{marginTop:'1em'}}   onSubmit={this.OnFormSubmit}>
             <h1><b>Schedule Meeting</b></h1>
         <div class="field">
           <label><b>Topic</b></label><br/><br/>
@@ -63,9 +63,9 @@ onChangeDuration= (e)=>{
         </div>
         <br/>
         
-        <div class="inline fields" style={{display:"flex"}}>
+        <div className="inline fields" style={{display:"flex"}}>
     
-    <div class="nine wide field">
+    <div className="nine wide field">
     <label><b>Start:</b></label>
     <div class="field">   
     <input id="date" type="date" name="appt-date" onChange={this.onChangeDate} ></input>
