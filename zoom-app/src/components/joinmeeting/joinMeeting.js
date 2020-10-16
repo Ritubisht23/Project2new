@@ -14,6 +14,15 @@ class joinMeeting extends Component {
 
     this.baseState = this.state;
   };
+  componentDidMount(){
+    console.log(localStorage.getItem('token'))
+      if(localStorage.getItem('token')==='undefined' || localStorage.getItem('token') === null){
+        console.log('hi pawan')
+       this.props.history.push({
+         pathname: '/signInNew'
+      }) ;
+    }
+  }
   handleChange(e) {
     var fields = this.state.fields;
     fields[e.target.name] = e.target.value;

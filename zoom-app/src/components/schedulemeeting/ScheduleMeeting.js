@@ -46,7 +46,7 @@ onChangeDuration= (e)=>{
             duration:this.state.duration
         };
         console.log('pawan',obj.email)
-        axios.post("http://127.0.0.1:5000/users/sendemail", obj)
+        axios.post("http://127.0.0.1:8008/users/sendemail", obj)
         .then((res) => console.log(res.data));
     }
     render(){

@@ -75,7 +75,7 @@ this.setState({
     
   }else{
   
-   Axios.post('http://localhost:5000/users/register', login)
+   Axios.post('http://localhost:8008/users/register', login)
       .then(res =>{
         this.setState({
           token: res.data.token,
@@ -144,15 +144,16 @@ this.setState({
                 <span className='error'>{errors.password}</span>}
                 </label>
       </div>
-      <div><Link to="SignInNew">
+      <div>
+        {/* <Link to="SignInNew"> */}
             <input type='submit' value='Sign Up' className='App-button'/>   
-            </Link>  
+            {/* </Link>   */}
       </div>
      
       </div>
       
     
-      <Divider vertical varticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
+      <Divider vertical verticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
     </Divider>
       
      

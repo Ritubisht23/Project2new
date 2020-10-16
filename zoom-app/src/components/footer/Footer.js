@@ -133,7 +133,7 @@ console.log(name);
                    </button> 
                   
                    <button className="icon1" onClick={start}>
-                   <FontAwesomeIcon icon={faMicrophone} size="8x" ></FontAwesomeIcon><br/><br/>
+                   <FontAwesomeIcon icon={faVideo} size="8x" ></FontAwesomeIcon><br/><br/>
                    <span>Start</span>
                    </button> 
 

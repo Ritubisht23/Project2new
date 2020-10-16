@@ -73,15 +73,31 @@ this.setState({
     })
     
   }else{
-  alert("hello");
-   Axios.post('http://10.34.190.242:5000/users/login', login)
+    console.log('hiiiiiiiiiii2222222222222222222222')
+   Axios.post('http://127.0.0.1:8008/users/login', {
+    mail: this.state.mail,
+    password: this.state.password
+    })
       .then(res =>{
+        console.log('hiiiiiiiiiii',res)
         this.setState({
           token: res.data.token,
           response:res.data.Status
          })
+         if(res.data.token)
+         {
+            this.props.history.push({
+              pathname: '/HomePage',
+              state: { token: res.data.token}
+            });
+         }
+         else{
+           
+           console.log('not working')
+         }
          localStorage.setItem('token', res.data.token);
       }).catch(err =>{
+        console.log('hiiiiiiiiiii',err)
          console.log(err)
      })
      console.log(this.state.response);
@@ -145,15 +161,15 @@ this.setState({
       </div>
       <div><input type='checkbox' name='signedIn' id='signedIn' className='App-checkbox'/>
             <lable className='App-checkbxLable' for='signedIn'>Keep me signed in</lable>
-            <Link to="HomePage">
+            {/* <Link to="HomePage"> */}
             <input type='submit' value='Sign In' className='App-button'/>
-            </Link>    
+            {/* </Link>     */}
       </div>
      
       </div>
       
     
-      <Divider vertical varticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
+      <Divider vertical verticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
     </Divider>
       
      
