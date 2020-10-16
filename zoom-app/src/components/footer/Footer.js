@@ -12,6 +12,7 @@ import Popup from 'reactjs-popup';
 import io from "socket.io-client";
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
+import TextContainer from '../TextContainer/TextContainer';
 
 // Globla Varibale definition for Chatting functionality
 const ENDPOINT='localhost:7000'
@@ -185,7 +186,8 @@ console.log(name);
                   </DropdownButton>
                   </button>
 
-                  <Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
+{/* Participant  compponent Starts*/}
+    <Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
                     
                    <FontAwesomeIcon icon={faUserFriends} size="2x" ></FontAwesomeIcon><br/>                   
                    <DropdownButton alignRight title="Participants" > 
@@ -200,22 +202,18 @@ console.log(name);
               <div class="item">
                 <FontAwesomeIcon icon={faSortDown} /><span style={{ textAlign: "center", marginLeft: "2.5cm" }}>Participants</span>
               </div>
-
-              <div style={{ marginTop: '40em' }}>
-                <button type="settings-1" class="btn btn-secondary" style={{ borderRadius: "5px", marginLeft: "0.5cm", marginRight: "0.4cm", width: "2cm", height: "1cm" }}>Invite</button>
-                <button type="settings-1" class="btn btn-secondary" style={{ borderRadius: "5px", marginRight: "0.4cm", width: "2cm", height: "1cm" }}>MuteAll</button>
-
-                <button style={{ borderRadius: "5px", width: "1cm", height: "1cm" }}>
-                  <FontAwesomeIcon icon={faEllipsisH} ></FontAwesomeIcon>
-                </button>
-
-
-              </div>
-            </div>
+              <div className="outerContainer">
+                  <div className="containerChat">
+                    
+                    <TextContainer users={users}/>
+                  </div>
+                </div>
+                </div>
+            
             </div>
           </Popup>
 
-
+{/* Participant  compponent end*/}
 
  {/* Chatting compponent Starts*/}
 
@@ -237,6 +235,7 @@ console.log(name);
                   <div className="containerChat">
                     <Messages messages={messages} name={name} />
                     <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+                    
                   </div>
                 </div>
 
