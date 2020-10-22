@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import io from "socket.io-client";
+import Footer from '../footer/Footer'
 
 const Room = (props) => {
     const userVideo = useRef();
@@ -127,7 +128,9 @@ const Room = (props) => {
             <video controls style={{height: 500, width: 500}} autoPlay ref={userVideo} />
             <video controls style={{height: 500, width: 500}} autoPlay ref={partnerVideo} />
             <button onClick={shareScreen}>Share screen</button>
+            <Footer />
         </div>
+        
     );
 };
 

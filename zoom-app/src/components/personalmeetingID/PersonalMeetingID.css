@@ -1,34 +1,24 @@
 .btn-one{
-   background-color: blue;
-   color: white;
-   text-align: center;
-   text-decoration: none;
-   width: 7cm;
-   height: 1.5cm;
-   margin-left: 3cm;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 320px;
+    height: 70px;
+    margin: auto;
+   }
+ .vl-new {
+    border-left: 1px solid grey;
+    height:100%;
+    position: absolute;
+    left: 50%;
+    top:0%
+  } 
+  .ui-one {
+     margin-top: -210px;
+    left: 50%;
   }
-.newvl {
- 
-   border-left: 1px solid grey;
-   height:100%;
-   position: absolute;
-   left: 50%;
-   top: 0cm;
- } 
-.btn-btn{
-   width: 5cm;
-   height: 0.8cm;
-}
-.column-left{
-   margin-top: 1cm;
-   margin-left: 1cm;
-   float: left;
-}
-.column-right{
-  margin-top: 1cm;
-   margin-left: 1cm;
-   float: right;
-}
-.form-new-new{
-   margin-left: 1cm;
-}
+ .btn-btn{
+    width: 300px;
+    height: 40px;
+ }

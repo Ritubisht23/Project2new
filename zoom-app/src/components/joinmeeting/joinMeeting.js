@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import {Link} from 'react-router-dom'
+import { Button } from 'semantic-ui-react';
 
 class joinMeeting extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class joinMeeting extends Component {
       if(localStorage.getItem('token')==='undefined' || localStorage.getItem('token') === null){
         console.log('hi pawan')
        this.props.history.push({
-         pathname: '/signInNew'
+         pathname: '/joinmeeting'
       }) ;
     }
   }
@@ -39,7 +40,7 @@ class joinMeeting extends Component {
         this.setState({fields:fields});
         
         this.props.history.push({
-          pathname: '/Footer',
+          pathname: '/meetingdetails',
           state: { detail: this.state.fields }
         });
     }
@@ -96,14 +97,15 @@ class joinMeeting extends Component {
          </div><br />
 
 {/* <Link to="Footer"> */}
-        <button className="ui button" style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
+        <button className="ui button" style={{marginLeft:"5cm",width:"2.1cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
         Join
         </button>
   {/* </Link> */}
-       
-        <button className="ui button" onClick={this.resetForm} style={{marginLeft:"0.5cm",width:"2.5cm",height:"0.7cm",color:"Black"}}>
+
+  
+  <Button className="ui button" href="/" style={{marginLeft:"1cm",backgroundColor:"grey",color:"white", padding:'0.1cm'}}>
          Cancel
-        </button>
+        </Button> 
         </form>
         </div>
        </Router>

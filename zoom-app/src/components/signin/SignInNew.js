@@ -132,6 +132,7 @@ this.setState({
 
 }
   render(){
+    localStorage.removeItem('token')
     const {errors} = this.state; 
     const leftstyle={
       width: '49%',
@@ -141,6 +142,8 @@ this.setState({
       width: '49%',
       float: 'right'
     }
+
+    
     
   return (
         <form onSubmit={this.submitHandler}> 
@@ -169,8 +172,8 @@ this.setState({
       </div>
       
     
-      <Divider vertical verticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
-    </Divider>
+      {/*<Divider vertical verticalAlign="middle" style={{borderColor:"whiteSmoke"}}><br/>
+    </Divider>*/}
       
      
       <div style={rightstyle}>

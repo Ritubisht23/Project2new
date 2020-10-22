@@ -11,7 +11,6 @@
 .container{
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 .column{
     display: flex; 
@@ -52,7 +51,6 @@
     background-color: white;
     border: white;
     margin-left: 20px;
-    margin-top: 20px;
 }
 .meeting-room{
     padding: 9cm;

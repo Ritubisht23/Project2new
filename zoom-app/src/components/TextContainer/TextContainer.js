@@ -6,7 +6,8 @@ import './TextContainer.css';
 
 const TextContainer = ({ users }) => (
   <div className="textContainer1">
-   <h3>People currently Online:</h3>
+    <p></p>
+   <h3><center>People currently Online:</center></h3>
     {
       users
         ? (

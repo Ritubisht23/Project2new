@@ -1,37 +1,37 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './Footer.css';
+import './Chat.css';
+import {  faMicrophone,faMicrophoneSlash,faVideo,faShare,faRecordVinyl,faShieldAlt,faUserFriends,faCommentAlt,
+faHeadphones, faPhotoVideo, faUserPlus, faMicrophoneAlt, faVideoSlash,faSortDown,faSave,faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from 'semantic-ui-react';
 import {Link,useHistory} from 'react-router-dom';
 import Popup from 'reactjs-popup';
-//import Participants from './Participants';
-//import Chat from './Chat';
 import io from "socket.io-client";
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 import TextContainer from '../TextContainer/TextContainer';
-import './Chat.css';
 
 // Globla Varibale definition for Chatting functionality
 const ENDPOINT='localhost:7000'
 let socket;
 
-
-
-const Footer=(props)=>{
-  console.log();
-  //for video call and screen share
-  const history=useHistory();
-      const start=()=> {
-        const id = props.location.state.detail.meetingID;
-        console.log(`/room/${id}`)
-        history.push(`/room/${id}`);
-        
-    }
   
 
-    // Use state and use effect for chat functinality
+const Footer=(props)=>{
+console.log();
+//for video call and screen share
+const history=useHistory();
+    const start=()=> {
+      const id = props.location.state.detail.meetingID;
+      console.log(`/room/${id}`)
+      history.push(`/room/${id}`);
+      
+  }
+
+// Use state and use effect for chat functinality
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');
@@ -49,8 +49,8 @@ const Footer=(props)=>{
    // const name= prompt("Enter your name to join the chat");
   //  const room= prompt("Enter Meeting ID to join the chat");
    
-   const name=props.name;
-   const room=props.meetingID;
+   const name=props.location.state.detail.username;
+   const room=props.location.state.detail.meetingID;
     
   setRoom(room);
   setName(name);
@@ -86,18 +86,64 @@ console.log(name);
   //*************************************Chatting functionality ends */
 
 
-
+ 
     const [audioMuted, setAudioMuted] = useState(false)
     const [videoMuted, setVideoMuted] = useState(false)
     return(
-     
-      <div className="container">
-        
+     <div className="container">
+         <div className="row">
+            <label className="label"> meeting topic   </label>
+            <label className="label-new"> : {props.location.state.detail.meetingID}</label><br/>
+            
+            <label className="label"> Host </label>
+            <label className="label-new-new">: {props.location.state.detail.username}</label><br/>
+
+            <label className="label"> Password  </label>
+            <label className="label-label"> : 2w5sg</label><br/>
+            
+            <label className="label"> Numeric Password  </label>
+            <label className="label-label-new"> : 143213</label><br/>
+            <label className="label">(Telephone/Room Systems)</label>
+             <br/>
+            
+            <label className="label"> Invite Link </label>
+            <label className="new-label">: http:skdfkj.com</label><br/>
+            <a className="label-1" href="#copy url">copy url</a>
+            {/* <button className="ui button" onClick={start} style={{marginLeft:"5cm",width:"2.5cm",height:"0.7cm",backgroundColor:"blue",color:"white"}}>
+        Sart
+        </button> */}
+         </div>
+
+         <div className="columns">                  
+                   <button className="icon1" >
+                     <Link to="joinAudio">
+                   <FontAwesomeIcon icon={faHeadphones} size="8x" ></FontAwesomeIcon></Link><br/><br/>
+                   <span>Join Audio</span>
+                   </button>
+
+                   <button className="icon1">
+                     <Link to="ShareScreen">
+                   <FontAwesomeIcon icon={faPhotoVideo} size="8x" ></FontAwesomeIcon></Link><br/><br/>
+                   <span>Share screen</span>
+                   </button>
+
+                   <button className="icon1" >
+                   <a  href="InviteOthers">
+                   <FontAwesomeIcon icon={faUserPlus} size="8x" ></FontAwesomeIcon></a><br/><br/>
+                   <span>Invite others</span>
+                   </button> 
+                  
+                   <button className="icon1" onClick={start}>
+                   <FontAwesomeIcon icon={faVideo} size="8x" ></FontAwesomeIcon><br/><br/>
+                   <span>Start</span>
+                   </button> 
+
+          </div>
          
         <footer className="footer is-primary">
                 <div className="column has-text-right">
                   <button className="btn btn-danger dropdown-toggle"  href="#active" onClick={()=>setAudioMuted(!audioMuted)}>
-                  {audioMuted ? <i class="big microphone icon"></i> : <i class="big microphone slash icon"></i>}<br/>
+                  <FontAwesomeIcon icon={audioMuted ? faMicrophoneAlt : faMicrophoneSlash} size="2x" ></FontAwesomeIcon><br/>
                    {/*<DropdownButton alignRight title="Mute" >                    
                   <Dropdown.Item className="dropdown-item" eventKey="option-1">Headset Microphone</Dropdown.Item>
                   <Dropdown.Item className="dropdown-item" eventKey="option-2">Same as system</Dropdown.Item>
@@ -113,8 +159,8 @@ console.log(name);
                    </button>
                    
 
-                   <button className="btn btn-danger dropdown-toggle"  href="#active" onClick={()=>setVideoMuted(!videoMuted)}>
-                  {videoMuted ? <i class="big video icon"></i> : <i class="big video slash icon"></i>}<br/>
+                   <button className="btn btn-danger dropdown-toggle" href="#active" onClick={()=>setVideoMuted(!videoMuted)}>
+                   <FontAwesomeIcon icon={videoMuted ?faVideo : faVideoSlash} size="2x" ></FontAwesomeIcon><br/>
                    {/* <DropdownButton alignRight title="Start Video" > 
                    <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br/><br/>
                    </DropdownButton> */}
@@ -125,7 +171,7 @@ console.log(name);
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
                     
                     <button className="btn btn-danger dropdown-toggle" href="#active" >
-                    <i class="big shield alternate icon"></i><br/>
+                   <FontAwesomeIcon icon={faShieldAlt} size="2x" ></FontAwesomeIcon><br/>
                    <DropdownButton alignRight title="Security" id="dropdown-menu-align-right" >                    
                   <Dropdown.Item className="dropdown-item" eventKey="option-1">Lock Meeting</Dropdown.Item>
                   <Dropdown.Item className="dropdown-item" eventKey="option-2">Enable Waiting Room</Dropdown.Item>
@@ -140,13 +186,10 @@ console.log(name);
                   </DropdownButton>
                   </button>
 
-                 
-              
-
 {/* Participant  compponent Starts*/}
     <Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
                     
-                 <i class=" big users icon"></i><br/>                   
+                   <FontAwesomeIcon icon={faUserFriends} size="2x" ></FontAwesomeIcon><br/>                   
                    <DropdownButton alignRight title="Participants" > 
                    <Link to="/InviteOthers" className="text1" >
                     <Dropdown.Item className="dropdown-item" eventKey="option-3"  />Invite Others
@@ -157,28 +200,27 @@ console.log(name);
                    </button>} position="right center">
             <div> <div class="ui right fixed vertical menu" style={{ width: "8.2cm" }}>
               <div class="item">
-              <span style={{ textAlign: "center", marginLeft: "2.5cm" }}><b>Participants</b></span><br/><br/>
+                <FontAwesomeIcon icon={faSortDown} /><span style={{ textAlign: "center", marginLeft: "2.5cm" }}>Participants</span>
+              </div>
               <div className="outerContainer">
                   <div className="containerChat">
                     
                     <TextContainer users={users}/>
-      
                   </div>
                 </div>
-              </div>
                 </div>
             
             </div>
-                  </Popup>
+          </Popup>
 
 {/* Participant  compponent end*/}
 
  {/* Chatting compponent Starts*/}
-                  
+
           <Popup trigger={
             <button className="btn btn-danger dropdown-toggle" href="#active">
 
-                <i class="big chat icon"></i><br />
+              <FontAwesomeIcon icon={faCommentAlt} size="2x" ></FontAwesomeIcon><br />
               <DropdownButton alignRight title="Chat" >
                 <Dropdown.Item className="dropdown-item" eventKey="option-1"></Dropdown.Item><br /><br />
               </DropdownButton>
@@ -186,27 +228,26 @@ console.log(name);
             </button>} position="right center">
             <div class="ui right fixed vertical menu" style={{ width: "8.2cm" }}>
               <div class="item">
-              <span style={{fontSize:'15px'}}><b><center>Chat</center></b></span><br/>
-              <div className="outerContainer">
+                <FontAwesomeIcon icon={faSortDown} /><span style={{ textAlign: "center", marginLeft: "2.5cm" }}>Chat</span>
+              </div>
+
+                <div className="outerContainer">
                   <div className="containerChat">
                     <Messages messages={messages} name={name} />
-                    
-              <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
-                    
+                    <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                     
                   </div>
                 </div>
-              </div>
 
             </div>
           </Popup>
  {/* Chatting compponent  Ends */}
 
 
-            
-<Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
+
+          <button className="btn btn-danger dropdown-toggle" href="#active">
             <Link to="ShareScreen" style={{ color: "white" }}>
-             <i class="big share square icon"></i><br />
+              <FontAwesomeIcon icon={faShare} size="2x" ></FontAwesomeIcon><br />
               <DropdownButton alignRight title="Share screen" >
                 <Dropdown.Item className="dropdown-item" eventKey="option-1">One participant can share at a time</Dropdown.Item>
                 <Dropdown.Item className="dropdown-item" eventKey="option-2">Mutiple participants can share simultaneously</Dropdown.Item>
@@ -215,20 +256,11 @@ console.log(name);
                 </Link> <br /><br />
               </DropdownButton>
             </Link>
-          </button>} position="center">
-            <div> <div class="ui right fixed vertical menu" style={{ width: "120em" }}>
-              <div class="item">
-          
-              </div>
-                </div>
-            
-            </div>
-            
-          </Popup>
+          </button>
 
 
           <button className="btn btn-danger dropdown-toggle">
-          <i class="big bullseye icon"></i>
+            <FontAwesomeIcon icon={faRecordVinyl} size="2x"></FontAwesomeIcon>
             <DropdownButton alignRight title="Record">
               <Dropdown.Item className="dropdown-item" eventKey="option-1">Start</Dropdown.Item>
               <Dropdown.Item className="dropdown-item" eventKey="option-2">Stop</Dropdown.Item>

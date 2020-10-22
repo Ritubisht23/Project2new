@@ -1,0 +1,12 @@
+.horizontal{
+    border-top:  1px solid grey;
+    width: 100%;    
+}
+.checkbox-new{
+    padding-left: 250px;
+    position: absolute;
+    top:40px;
+}
+.checkbox{
+    padding-top: 30px;  
+  }
