@@ -22,13 +22,7 @@ let socket;
 const Footer=(props)=>{
   console.log();
   //for video call and screen share
-  const history=useHistory();
-      const start=()=> {
-        const id = props.location.state.detail.meetingID;
-        console.log(`/room/${id}`)
-        history.push(`/room/${id}`);
-        
-    }
+
   
 
     // Use state and use effect for chat functinality
@@ -205,7 +199,7 @@ console.log(name);
 
             
 <Popup trigger={<button className="btn btn-danger dropdown-toggle" href="#active">
-            <Link to="ShareScreen" style={{ color: "white" }}>
+            <Link to="Video" style={{ color: "white" }}>
              <i class="big share square icon"></i><br />
               <DropdownButton alignRight title="Share screen" >
                 <Dropdown.Item className="dropdown-item" eventKey="option-1">One participant can share at a time</Dropdown.Item>

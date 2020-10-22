@@ -14,7 +14,7 @@ class Icons extends React.Component{
                    </button>
 
                    <button className="icon1">
-                     <Link to="ShareScreen">
+                     <Link to="Video">
                      <i class=" red huge window restore outline icon"></i></Link><br/><br/>
                    <span>Share screen</span>
                    </button>
@@ -26,7 +26,8 @@ class Icons extends React.Component{
                    </button> 
                   
                    <button className="icon1" >
-                   <i class="red huge video icon"></i><br/><br/>
+                     <Link to='Video'>
+                   <i class="red huge video icon"></i> </Link><br/><br/>
                    <span>Start</span>
                    </button> 
 

@@ -25,9 +25,9 @@ console.log();
 //for video call and screen share
 const history=useHistory();
     const start=()=> {
-      const id = props.location.state.detail.meetingID;
-      console.log(`/room/${id}`)
-      history.push(`/room/${id}`);
+      // const id = props.location.state.detail.meetingID;
+      // console.log(`/room/${id}`)
+      history.push('/video');
       
   }
 

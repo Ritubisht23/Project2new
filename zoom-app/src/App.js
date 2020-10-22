@@ -17,7 +17,7 @@ import PersonalMeeting from './components/personalmeeting/PersonalMeeting';
 import Home from './components/home1/Home';
 import ShareScreen from './components/sharescreen/ShareScreen';
 import roomWithFooter from './components/sharescreen/roomWithFooter';
-import RoomC from './components/sharescreen/RoomC';
+import Video from './components/sharescreen/Video';
 import SignInNew from './components/signin/SignInNew';
 import SignUpNew from './components/signup/SignUpNew';
 
@@ -31,7 +31,8 @@ import HomePage from './components/home/HomePage';
 import Gridnew from './components/home/Gridnew';
 import Settings from './components/home/Settings';
 import SettingsGeneral from './components/home/SettingsGeneral';
-import PersonalMeetingID from './components/PersonalMeetingID/PersonalMeetingID';
+// import PersonalMeetingID from './components/PersonalMeetingID/PersonalMeetingID';
+import PersonalMeetingID from './components/personalmeeting/PersonalMeeting';
 
 
 const App=()=>{
@@ -64,10 +65,10 @@ const App=()=>{
             <Route exact path="/Yahoomail" component={Yahoomail} />
             <Route exact path="/PersonalMeeting" component={PersonalMeeting} />
 
-            <Route exact path="/ShareScreen1" component={ShareScreen} />
-            <Route exact path="/ShareScreen" component={RoomC} />
-            <Route exact path="/test" component={roomWithFooter} />
-            <Route path="/room/:roomID" component={RoomC} />
+{/* {            <Route exact path="/ShareScreen1" component={ShareScreen} />} */}
+            {/* <Route exact path="/ShareScreen" component={RoomC} /> */}
+            <Route exact path="/Video" component={Video} />
+            {/* {<Route path="/room/:roomID" component={RoomC} />} */}
              <Route exact path="/SignInNew" component={SignInNew} />
              <Route exact path="/SignUpNew" component={SignUpNew} />
              <Route exact path="/HomePage" component={HomePage}/>  
