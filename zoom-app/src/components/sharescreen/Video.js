@@ -13,12 +13,12 @@ import CallEndIcon from '@material-ui/icons/CallEnd'
 
 
 import { message } from 'antd'
-import 'antd/dist/antd.css'
+// import 'antd/dist/antd.css'
 
 import { Row } from 'reactstrap'
-import Modal from 'react-bootstrap/Modal'
-import 'bootstrap/dist/css/bootstrap.css'
-import "./Video.css"
+// import Modal from 'react-bootstrap/Modal'
+//import 'bootstrap/dist/css/bootstrap.css'
+// import "./Video.css"
 
 const server_url = "http://localhost:7000"
 
@@ -452,7 +452,7 @@ class Video extends Component {
 				</div>
 			)
 		}
-		return (
+		return (<React.Fragment>
 			<div>
 				{this.state.askForUsername === true ?
 					<div>
@@ -510,8 +510,10 @@ class Video extends Component {
 						</div>
 					</div>
 				}
-				<Footer/>
+				
 			</div>
+			<Footer/>
+			</React.Fragment>
 		)
 	}
 }
