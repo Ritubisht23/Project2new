@@ -4,6 +4,7 @@ import './icons.css';
 
 class Icons extends React.Component{
     render(){
+      console.log('this is pawan',this.props.name)
         return(
 
             <div className="columns">                  
@@ -26,7 +27,13 @@ class Icons extends React.Component{
                    </button> 
                   
                    <button className="icon1" >
-                     <Link to='Video'>
+                     <Link to={{
+                       pathname:'/Video',
+                       videoProps :{
+                          name: this.props.name,
+                          meetingID:this.props.meetingID
+                       }
+                     }}>
                    <i class="red huge video icon"></i> </Link><br/><br/>
                    <span>Start</span>
                    </button> 

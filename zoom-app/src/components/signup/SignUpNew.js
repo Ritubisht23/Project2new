@@ -61,7 +61,7 @@ submitHandler = (event) => {
   const login = {
     mail: this.state.mail,
     password: this.state.password,
-   
+    confirmpassword: this.state.password,
   }
   if(this.state.mail ==='' ){
 this.setState({
@@ -75,17 +75,17 @@ this.setState({
     
   }else{
   
-   Axios.post('http://localhost:8008/users/register', login)
+   Axios.post('http://localhost:7000/details/register', login)
       .then(res =>{
+        console.log(res)
         this.setState({
-          token: res.data.token,
           response:res.data.Status
          })
-         localStorage.setItem('token', res.data.token);
+         //localStorage.setItem('token', res.data.token);
       }).catch(err =>{
          console.log(err)
      })
-     console.log(this.state.response);
+    // console.log(this.state.response);
         this.setState({
           mail: '',
            password: '',

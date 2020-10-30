@@ -444,6 +444,7 @@ class Video extends Component {
 	}
 
 	render() {
+		console.log('this is in vedio',this.props.location.videoProps);
 		if(this.isChrome() === false){
 			return (
 				<div style={{background: "white", width: "30%", height: "auto", padding: "20px", minWidth: "400px",
@@ -512,7 +513,7 @@ class Video extends Component {
 				}
 				
 			</div>
-			<Footer/>
+			{/* <Footer/> */}
 			</React.Fragment>
 		)
 	}

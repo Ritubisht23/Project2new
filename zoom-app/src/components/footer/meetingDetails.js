@@ -28,7 +28,7 @@ const meetingDetails=(props)=>{
             
          </div>
     
-        <Icons />
+        <Icons name={props.location.state.detail.username} meetingID={props.location.state.detail.meetingID}/>
         <Footer name={props.location.state.detail.username} meetingID={props.location.state.detail.meetingID}  />
     </>
         );
